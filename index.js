@@ -14,6 +14,20 @@ var client = new Twitter(keys.twitter);
 var command = process.argv[2];
 var searchTerm = process.argv[3]
 
+function logInfo(array) {
+    fs.appendFile("log.txt", array, function (err) {
+
+        // If the code experiences any errors it will log the error to the console.
+        if (err) {
+            return console.log(err);
+        }
+
+        // Otherwise, it will print: "movies.txt was updated!"
+        console.log("log.txt was updated!");
+
+    });
+}
+
 function displaySpotifyResults(song) {
     spotify.search({
         type: 'track',
@@ -29,6 +43,11 @@ function displaySpotifyResults(song) {
             console.log(songInfo.name)
             console.log(songInfo.album.name)
             console.log(songInfo.preview_url)
+
+            var logInfoArr = [songInfo.artists[0].name, songInfo.name, songInfo.album.name, songInfo.preview_url, "________"]
+
+            logInfo(logInfoArr);
+
 
         }
     });
@@ -50,11 +69,17 @@ function displayMovieResults(movie) {
             console.log("The movie's plot is: " + JSON.parse(body).Plot);
             console.log("The movie's actors are: " + JSON.parse(body).Actors);
 
+            var logInfoArr = [JSON.parse(body).Title, JSON.parse(body).Year, JSON.parse(body).imdbRating, JSON.parse(body).Ratings[1].Value, JSON.parse(body).Country, JSON.parse(body).Language, JSON.parse(body).Plot, JSON.parse(body).Actors, "________"]
+
+            logInfo(logInfoArr);
+
         }
     });
 
 
 }
+
+
 
 function displayTwitterResults() {
     var params = {
@@ -62,9 +87,14 @@ function displayTwitterResults() {
     };
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (!error) {
+
             for (var i = 0; i < tweets.length; i++) {
                 console.log(tweets[i].created_at);
                 console.log(tweets[i].text);
+                logInfo(tweets[i].created_at);
+                logInfo(tweets[i].text);
+                logInfo("_______");
+
             }
         }
     });
