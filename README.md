@@ -25,11 +25,11 @@ TWITTER_ACCESS_TOKEN_SECRET=your-twitter-access-token-secret
 * `node index.js my-tweets` (to see the last 20 tweets of a user)
 
 *  `node index.js spotify-this-song '<song name here>'` ( shows    
-     * Artist(s)
-     * The song's name
-     * A preview link of the song from Spotify
-     * The album that the song is from
-     * If no song is provided then your program will default to "The Sign" by Ace of Base.)
+      * Artist(s)
+      * The song's name
+      * A preview link of the song from Spotify
+      * The album that the song is from
+      * If no song is provided then your program will default to "The Sign" by Ace of Base.)
 
 * `node liri.js movie-this '<movie name here>'`( shows
        * Title of the movie.
