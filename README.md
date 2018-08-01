@@ -32,6 +32,7 @@ TWITTER_ACCESS_TOKEN_SECRET=your-twitter-access-token-secret
       * If no song is provided then your program will default to "The Sign" by Ace of Base.)
 
 * `node liri.js movie-this '<movie name here>'`( shows
+       
        * Title of the movie.
        * Year the movie came out.
        * IMDB Rating of the movie.
